@@ -3,23 +3,23 @@ version: "3"
 services:
   backend:
     network_mode: bridge
-    image: node:14
+    image: node:alpine
     volumes:
       - ./backend:/backend
     working_dir: /backend
     ports:
       - 5000:5000
-    command: bash -c "npm i --quiet && npm run dev"
+    command: sh -c "npm i --quiet && npm run dev"
 
   frontend:
     network_mode: bridge
-    image: node:14
+    image: node:alpine
     volumes:
       - ./frontend:/frontend
     working_dir: /frontend
     ports:
       - 3000:3000
-    command: bash -c "npm i --quiet && npm start"
+    command: sh -c "npm i --quiet && npm start"
     depends_on:
       - backend
     
