@@ -3,7 +3,7 @@ version: "3"
 services:
   backend:
     network_mode: bridge
-    image: node:alpine
+    image: node:slim
     volumes:
       - ./backend:/backend
     working_dir: /backend
@@ -13,7 +13,7 @@ services:
 
   frontend:
     network_mode: bridge
-    image: node:alpine
+    image: node:slim
     volumes:
       - ./frontend:/frontend
     working_dir: /frontend

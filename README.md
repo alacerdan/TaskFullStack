@@ -8,7 +8,7 @@
 
 
  ### Requirements:
-- Node version => 15.10
+- Node version => node:slim
 - Docker and Docker Compose
 
 ### How to works
