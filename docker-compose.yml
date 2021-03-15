@@ -9,7 +9,7 @@ services:
     working_dir: /backend
     ports:
       - 5000:5000
-    command: sh -c "npm i --quiet && npm run dev"
+    command: sh -c "npm i --quiet && npm start"
 
   frontend:
     network_mode: bridge
