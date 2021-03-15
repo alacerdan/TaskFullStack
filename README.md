@@ -8,7 +8,7 @@
 
 
  ### Requirements:
-- Node version => node:slim
+- Node version => node:13-alpine
 - Docker and Docker Compose
 
 ### How to works
@@ -28,6 +28,7 @@ $ make
 ![](figures/clever_home.png)
 
 - Card used:
+
 ![](figures/card.png)
 
 **Developed functions:**
