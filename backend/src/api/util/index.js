@@ -12,8 +12,16 @@ const createPromise = (fn) => {
 // Promisify function
 const readFile = createPromise(fs.readFile)
 
+// Convert function -> default EUR
+const convertCurreny = ({value}, 
+                        unit=7.55,
+                        currency='EUR') =>  {
+    value = `${(+value/unit).toFixed(2)}`
+    return {value, currency}
+}
 
 module.exports = {
     createPromise,
-    readFile
+    readFile,
+    convertCurreny
 }

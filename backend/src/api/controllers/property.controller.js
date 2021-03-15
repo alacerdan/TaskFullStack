@@ -1,4 +1,4 @@
-const { readFile } = require('../util');
+const { convertCurreny, readFile } = require('../util');
 
 'use strict';
 
@@ -50,7 +50,7 @@ const readExtractData = async path => {
             name,
             city,
             properties,
-            lowestPricePerNight,
+            lowestPricePerNight: convertCurreny(lowestPricePerNight),
             overview,
             overallRating,
             starRating,
