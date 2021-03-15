@@ -25,6 +25,15 @@ const VCard = (props) => {
             <Col span={4}>
                 <Space direction='vertical'>
                     <Row>
+                        {/* Title Per Night  */}
+                        <Col offset={3} span={18}>
+                            <Text strong>
+                                Per Night
+                            </Text>
+                        </Col>
+                        {/* Title Per Night  */}
+                    </Row>
+                    <Row>
                         {/* Price Per Night  */}
                         <Col span={24}>
                             Price: <Tag color="volcano"><EuroCircleOutlined/> {lowestPricePerNight.value}</Tag>
