@@ -8,6 +8,7 @@ import {
 import Logo from './components/img/logo_clever.png'
 import './CleverApp.css';
 
+
 const { Content } = Layout;
 const { Title, Text } = Typography;
 
