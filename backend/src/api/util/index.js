@@ -12,7 +12,7 @@ const createPromise = (fn) => {
 // Promisify function
 const readFile = createPromise(fs.readFile)
 
-// Convert function -> default EUR
+// Convert function -> default from VEF to EUR
 const convertCurreny = ({value}, 
                         unit=7.55,
                         currency='EUR') =>  {
