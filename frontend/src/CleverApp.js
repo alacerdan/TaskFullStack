@@ -1,25 +1,16 @@
 import React from 'react'
-
 import {  
   Layout, Row, Col,
   Space, Pagination, Image,
   Select, Typography } from 'antd';
-  
 import Logo from './components/img/logo_clever.png'
-
 import VCard from './components/VCard';
 import { sortBy, sortByCriteria } from './components/helpers'
-
 import './CleverApp.css';
-
-
 
 const { Content } = Layout;
 const { Title, Text } = Typography;
 const { Option } = Select;
-
-
-
 
 class CleverApp extends React.Component {
 
@@ -39,7 +30,7 @@ class CleverApp extends React.Component {
 
       // Bind functions
       this.sortBy = sortBy.bind(this)
-      this.handlerCase = sortByCriteria.bind(this)
+      this.handleCase = sortByCriteria.bind(this)
     }
 
     async componentDidMount(){
@@ -50,11 +41,11 @@ class CleverApp extends React.Component {
         const response = await fetch(apiURL);
         const data = await response.json();
         const totalItems = data.length
-  
+        // Status update, called paging handler and updated page status
         this.setState(
           {properties: [...data]},
           () => {
-            this.handlerPagination();
+            this.handlePagination();
             const { page:currentPage } = this.state
             this.setState({page: {...currentPage, totalItems:totalItems, allItems:data}});
         })
@@ -63,7 +54,8 @@ class CleverApp extends React.Component {
       }
     }
     // Pagination functions 
-    handlerPagination = (pageNumber=1) => {
+    // Set state and update by call setItemsForCurrentPage function
+    handlePagination = (pageNumber=1) => {
       const { itemsPerPage } = this.state.page;
       const currentPage = pageNumber;
       const offset = currentPage * itemsPerPage;
@@ -74,7 +66,7 @@ class CleverApp extends React.Component {
           this.setItemsForCurrentPage();
       });
     }
-    // Set page control variables 
+    // Set page control variables and update state
     setItemsForCurrentPage = () => {
       const { page } =  this.state
       const { offset, itemsPerPage, allItems } = page;
@@ -87,19 +79,19 @@ class CleverApp extends React.Component {
     // -- Pagination functions 
 
     // Filter function
-    handlerFilter = (value) => {
+    handleFilter = (value) => {
       const { properties, page } = this.state
   
-      const ordered = this.handlerCase(value, properties)
+      const ordered = this.handleCase(value, properties)
     
       this.setState({page:{...page, allItems: ordered}},
-        ()=> this.handlerPagination()
+        ()=> this.handlePagination()
       );
     }
     // --- Filter function
     
     render(){
-      // Init Variables
+      // Get variable from state
       const { page } = this.state
       const {currentPageItems, totalItems, currentPage, itemsPerPage } = page
 
@@ -114,7 +106,7 @@ class CleverApp extends React.Component {
                       />
                       <Title><Text type='warning'>Clever Task Full Stack</Text></Title>
                 </Row>
-              {/* --- */}
+              {/* --- Header  */}
               <br/>
               <Row>
                 {/* Pagination widget */}
@@ -127,11 +119,10 @@ class CleverApp extends React.Component {
                     defaultPageSize={itemsPerPage}
                     defaultCurrent={1}
                     showSizeChanger={false}
-                    onChange={this.handlerPagination}
+                    onChange={this.handlePagination}
                   />      
                 </Col>
-                {/* --- */}
-
+                {/* --- Pagination widget */}
                 {/* Filter by features  */}
                 <Col span={8} push={2}>
 
@@ -140,7 +131,7 @@ class CleverApp extends React.Component {
                     style={{ width: '8vw', minWidth: 150 }}
                     placeholder="Sort by"
                     optionFilterProp="children"
-                    onChange={this.handlerFilter}
+                    onChange={this.handleFilter}
                   >
                     <Option value="lowPrice">Price: Low to High</Option>
                     <Option value="highPrice">Price: High to Low</Option>
@@ -149,8 +140,6 @@ class CleverApp extends React.Component {
                     <Option value="featured">Featured</Option>
                   </Select>
                 </Col>
-
-
                 {/* --- Filter by features  */}
               </Row>
 
@@ -158,6 +147,8 @@ class CleverApp extends React.Component {
               <Row>
                     {/* Cards apresentation */}
                     <Col push={2} span={22}>
+
+                    {/* Loop overall properties */}
                     {currentPageItems.map(item => {
 
                       return (
@@ -166,9 +157,12 @@ class CleverApp extends React.Component {
                           <VCard property={item}/>
                         </Space>
                     )})}
+                    {/* --- Loop overall properties */}
+
+
                   </Col>
               </Row>
-              {/* Properties Cards */}
+              {/* --- Properties Cards */}
 
           </Content>
 

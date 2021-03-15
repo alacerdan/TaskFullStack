@@ -11,7 +11,7 @@ describe("Clever APP Components", () => {
     expect(linkElement).toBeInTheDocument();
   });
 
-  test("VCard Test", ()=>{
+  test("VCard test component", ()=>{
 
     const item = {
       "id": 529,

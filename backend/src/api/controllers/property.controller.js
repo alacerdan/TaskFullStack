@@ -63,14 +63,15 @@ const readExtractData = async path => {
 
 
 module.exports = {
+    // Return all properties from json file inside ./db
     async getAll(req, res) {
-
         const { properties, location } = await readExtractData(dataPath)
 
         const data =  properties.map(buildObjResponse(location))
 
         res.json(data)
     },
+    // Return property by ID
     async getById (req, res) {
         const { id } = req.params
 

@@ -1,4 +1,5 @@
-
+// Sort function
+// param: key = {prop:{value:Number}}
 function sortBy(key, order='asc'){
     const compare = (a, b) => {
       if (+a[key].value > +b[key].value) {
@@ -12,7 +13,7 @@ function sortBy(key, order='asc'){
     }
     return compare
 }
-
+// Receives one value to filter array of properties
 function sortByCriteria (value, properties){
     let ordered = []
 
