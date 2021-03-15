@@ -3,7 +3,7 @@ version: "3"
 services:
   backend:
     network_mode: bridge
-    image: node:slim
+    image: node:13-alpine
     volumes:
       - ./backend:/backend
     working_dir: /backend
@@ -13,13 +13,13 @@ services:
 
   frontend:
     network_mode: bridge
-    image: node:slim
+    image: node:14-alpine
     volumes:
       - ./frontend:/frontend
     working_dir: /frontend
     ports:
       - 3000:3000
-    command: sh -c "npm i --quiet && npm start"
+    command: sh -c "npm i npm -g && npm install chokidar && npm i --quiet && npm start"
     depends_on:
       - backend
     
