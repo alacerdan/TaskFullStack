@@ -45,9 +45,9 @@ Used ExpressJS, Cors e Morgan (debugger)
 
 #### Resources
 
-> `GET /` -> Get message"API Clever Advertising" 
-> `GET /property` -> Get all ads. Return array of ads
-> `GET /property/id` -> Get ads by id. Return one ads
+> `GET /` -> Get message "API Clever Advertising".   
+> `GET /property` -> Get all ads. Return array of ads.  
+> `GET /property/id` -> Get ads by id. Return one ads.  
 
 
  **Tech informations:**
