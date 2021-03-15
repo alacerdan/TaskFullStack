@@ -1,26 +1,32 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "backend",
+  "main": "src/server.js",
+  "jest": {
+    "verbose": true
+  },
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "./node_modules/.bin/nodemon src/server.js",
+    "start": "./node_modules/.bin/nodemon src/server.js",
     "build": "webpack",
     "test": "./node_modules/.bin/jest --watchAll"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
     "axios": "^0.21.1",
     "jest": "^26.6.3",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9"
   },
   "dependencies": {
+    "body-parser": "1.7.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "body-parser": "1.7.0",
     "moment": "^2.17.1",
     "moment-timezone": "^0.5.13"
   }
